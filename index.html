@@ -31,6 +31,19 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
+    .language-switcher {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .language-switcher button {
+      background-color: #005f6b;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
     section {
       max-width: 800px;
       margin: 40px auto;
@@ -59,44 +72,74 @@
       background: #222;
       color: white;
     }
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+      section {
+        padding: 0 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Amr Soliman</h1>
-    <p>Marketing Consultant | Medical Tourism Specialist</p>
+    <h1 data-en="Amr Soliman" data-ar="عمرو سليمان" data-cz="Amr Soliman">Amr Soliman</h1>
+    <p data-en="Marketing Consultant | Medical Tourism Specialist" data-ar="استشاري تسويق | متخصص في السياحة العلاجية" data-cz="Marketingový konzultant | Specialista na zdravotní turistiku">Marketing Consultant | Medical Tourism Specialist</p>
     <img src="profile.jpg" alt="Amr Soliman" class="profile-pic">
+    <div class="language-switcher">
+      <button onclick="setLang('en')">EN</button>
+      <button onclick="setLang('ar')">AR</button>
+      <button onclick="setLang('cz')">CZ</button>
+    </div>
   </header>
 
   <section class="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a freelance marketing specialist with over 10 years of experience in digital marketing, content strategy, and brand building. I also offer medical tourism consulting for clients seeking treatment in the Czech Republic.
+    <h2 data-en="About Me" data-ar="من أنا" data-cz="O mně">About Me</h2>
+    <p data-en="I’m a freelance marketing specialist with over 10 years of experience in digital marketing, content strategy, and brand building. I also offer medical tourism consulting for clients seeking treatment in the Czech Republic."
+       data-ar="أنا متخصص تسويق حر لدي أكثر من 10 سنوات من الخبرة في التسويق الرقمي واستراتيجيات المحتوى وبناء العلامة التجارية. أقدم أيضًا استشارات في مجال السياحة العلاجية للمرضى الباحثين عن العلاج في جمهورية التشيك."
+       data-cz="Jsem nezávislý marketingový specialista s více než 10 lety zkušeností v digitálním marketingu, obsahové strategii a budování značky. Nabízím také poradenství v oblasti zdravotní turistiky pro klienty hledající léčbu v České republice.">
+       I’m a freelance marketing specialist with over 10 years of experience in digital marketing, content strategy, and brand building. I also offer medical tourism consulting for clients seeking treatment in the Czech Republic.
     </p>
   </section>
 
   <section class="services">
-    <h2>My Services</h2>
+    <h2 data-en="My Services" data-ar="خدماتي" data-cz="Moje služby">My Services</h2>
     <ul>
-      <li>Social Media Strategy & Content Creation</li>
-      <li>Marketing Consultations for Clinics & Wellness Centers</li>
-      <li>Medical Tourism Planning & Coordination</li>
-      <li>Website Copywriting & Arabic-Czech Translation</li>
+      <li data-en="Social Media Strategy & Content Creation" data-ar="استراتيجية وسائل التواصل الاجتماعي وإنشاء المحتوى" data-cz="Strategie sociálních médií a tvorba obsahu">Social Media Strategy & Content Creation</li>
+      <li data-en="Marketing Consultations for Clinics & Wellness Centers" data-ar="استشارات تسويقية للعيادات ومراكز العافية" data-cz="Marketingové konzultace pro kliniky a wellness centra">Marketing Consultations for Clinics & Wellness Centers</li>
+      <li data-en="Medical Tourism Planning & Coordination" data-ar="تخطيط وتنسيق السياحة العلاجية" data-cz="Plánování a koordinace zdravotní turistiky">Medical Tourism Planning & Coordination</li>
+      <li data-en="Website Copywriting & Arabic-Czech Translation" data-ar="كتابة مواقع الإنترنت وترجمة من العربية إلى التشيكية" data-cz="Texty pro web a překlad z arabštiny do češtiny">Website Copywriting & Arabic-Czech Translation</li>
     </ul>
   </section>
 
   <section class="contact">
-    <h2>Contact Me</h2>
+    <h2 data-en="Contact Me" data-ar="اتصل بي" data-cz="Kontaktujte mě">Contact Me</h2>
     <p>
-      Email: <a href="mailto:amr@example.com">amr@example.com</a><br>
-      LinkedIn: <a href="https://www.linkedin.com/in/amr-soliman-169739176" target="_blank">linkedin.com/in/amr-soliman-169739176</a>
+      <span>Email:</span> <a href="mailto:amr.soliman@live.com">amr.soliman@live.com</a><br>
+      <span>LinkedIn:</span> <a href="https://www.linkedin.com/in/amr-soliman-169739176" target="_blank">linkedin.com/in/amr-soliman-169739176</a>
     </p>
   </section>
 
   <footer>
     <p>&copy; 2025 Amr Soliman. All rights reserved.</p>
   </footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.innerText = el.getAttribute('data-' + lang);
+        if (lang === 'ar') {
+          document.body.style.direction = 'rtl';
+          document.body.style.textAlign = 'right';
+        } else {
+          document.body.style.direction = 'ltr';
+          document.body.style.textAlign = 'left';
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
