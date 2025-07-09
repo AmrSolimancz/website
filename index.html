@@ -72,6 +72,27 @@
       background: #222;
       color: white;
     }
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #25d366;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      text-align: center;
+      line-height: 50px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+    .whatsapp-button:hover {
+      background-color: #1ebe5d;
+    }
     @media screen and (max-width: 600px) {
       header h1 {
         font-size: 1.5em;
@@ -126,6 +147,10 @@
     <p>&copy; 2025 Amr Soliman. All rights reserved.</p>
   </footer>
 
+  <a href="https://wa.me/420776440505" target="_blank" id="whatsapp-btn" class="whatsapp-button" title="Chat with me on WhatsApp">
+    💬
+  </a>
+
   <script>
     function setLang(lang) {
       document.querySelectorAll('[data-' + lang + ']').forEach(el => {
@@ -138,7 +163,23 @@
           document.body.style.textAlign = 'left';
         }
       });
+      updateWhatsAppPosition(lang);
     }
+
+    function updateWhatsAppPosition(lang) {
+      const btn = document.getElementById('whatsapp-btn');
+      if (lang === 'ar') {
+        btn.style.left = 'unset';
+        btn.style.right = '20px';
+      } else {
+        btn.style.right = 'unset';
+        btn.style.left = '20px';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setLang('en');
+    });
   </script>
 
 </body>
